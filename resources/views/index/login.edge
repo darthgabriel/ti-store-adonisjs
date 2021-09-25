@@ -1,0 +1,34 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+
+@section('breadcrumb')
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Login</li>
+    </ol>
+  </nav>
+  @end
+
+  @section('body')
+  <div class="col-4 mx-auto">
+  <div class="card">
+    <div class="card-header">Conexion</div>
+    <div class="card-body">
+        <form action="login" method="post" autocomplete="off">
+          <div class="mb-3">
+              <label class="form-label">Usuario</label>
+              <input type="text" class="form-control" name="username">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="form-control btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+@end

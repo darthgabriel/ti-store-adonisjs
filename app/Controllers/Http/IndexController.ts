@@ -5,15 +5,21 @@ import User from 'App/Models/User'
 export default class IndexController {
 
     public async index({auth, request, response, view}: HttpContextContract) {
-        return view.render('index')
 
+        let general = {
+            categorias: await Database.from('productos_categorias').select('categoria').distinct()
+        }
+        for (let i = 0; i < general.categorias.length; i++) {
+            general.categorias[i].subcategoria = await Database.from('productos_categorias').select('subcategoria').where('categoria',general.categorias[i].categoria)
+        }
+
+        return view.render('index/home',{general})
     }
 
     public async login_form({auth, request, response, view}: HttpContextContract) {
         await auth.use('web').check()
-        let authenticate = auth.use('web').isLoggedIn
-        if (!authenticate) {
-        return view.render('login')
+        if (!auth.use('web').isLoggedIn) {
+        return view.render('index/login')
         } else {
             response.redirect('/dashboard')
         }
@@ -29,18 +35,24 @@ export default class IndexController {
             .query()
             .where('username', username)
             .where('password', password)
-            .firstOrFail()
-        // Create session
-        await auth.use('web').login(user)
+            .first()
+
+        if (user != null) {
+            // Create session
+            await auth.use('web').login(user)
+        }
 
         response.redirect('/dashboard')
     }
 
     public async dashboard({auth, request, response, view}: HttpContextContract) {
         await auth.use('web').authenticate()
-
         // ✅ Request authenticated
-       response.send(auth.user?.$extras.fullname)
+        let general = {
+            
+        }
+        console.info(auth.user?.$attributes.username)
+        return view.render('index/dashboard',{general})
     }
 
     public async logout({auth, request, response, view}: HttpContextContract) {

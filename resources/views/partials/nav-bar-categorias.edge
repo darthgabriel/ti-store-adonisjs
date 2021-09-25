@@ -1,0 +1,15 @@
+<div class="btn-group mt-4 ms-4 flex-wrap">
+  @each(categoria in general.categorias)
+
+  <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" id="defaultDropdown"
+    data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+    {{ categoria.categoria }}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+    @each(subcategoria in categoria.subcategoria )
+    <li><a class="dropdown-item" href="#">{{ subcategoria.subcategoria }}</a></li>
+    @end
+  </ul>
+
+  @end
+</div>
