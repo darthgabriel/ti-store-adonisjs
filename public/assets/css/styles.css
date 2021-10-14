@@ -8,6 +8,7 @@
  * Website: http://themes.3rdwavemedia.com/
 */
 /* ======= Base ======= */
+
 body {
   font-family: 'Open Sans', arial, sans-serif;
   color: #494d55;
@@ -41,16 +42,17 @@ p {
 }
 
 a {
-  color: #3aa7aa;
+  color: #494d55;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
-  color: #339597;
+  /*text-decoration: underline;*/
+  color: #fa9107;
 }
 
 a:focus {

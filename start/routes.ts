@@ -21,6 +21,12 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/','IndexController.index');
+//servicio al cliente
+Route.get('/politicas_venta','IndexController.politicas_venta');
+Route.get('/garantia_devolucion','IndexController.garantia_devolucion');
+
+
+
 Route.get('/login','IndexController.login_form');
 Route.post('/login','IndexController.login_post');
 Route.get('/logout','IndexController.logout');
